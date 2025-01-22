@@ -43,7 +43,7 @@ Title.BackgroundTransparency = 1
 
 -- Logo
 Logo.Parent = Frame
-Logo.Image = "rbxassetid://123456789" -- Thay bằng Asset ID của logo
+Logo.Image = "rbxassetid://122376714508463" -- Thay bằng Asset ID của logo
 Logo.Size = UDim2.new(0.1, 0, 0.5, 0)
 Logo.Position = UDim2.new(0.02, 0, 0.1, 0)
 Logo.BackgroundTransparency = 1
