@@ -1,10 +1,111 @@
+-- Tạo GUI loading
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner") -- Bo tròn góc cho bảng
+local ProgressBar = Instance.new("Frame")
+local ProgressBarCorner = Instance.new("UICorner") -- Bo tròn góc cho thanh tiến trình
+local ProgressText = Instance.new("TextLabel")
+local Title = Instance.new("TextLabel")
+local Logo = Instance.new("ImageLabel")
+local FrameBorder = Instance.new("Frame") -- Viền RGB chạy xung quanh bảng
+local ProgressBarBorder = Instance.new("Frame") -- Viền RGB chạy quanh thanh tiến trình
+
+-- Đưa GUI vào PlayerGui
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.Name = "LoadingScreen"
+
+-- Nền chính của bảng
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Frame.Size = UDim2.new(0.3, 0, 0.2, 0) -- Nhỏ hơn 50%
+Frame.Position = UDim2.new(0.35, 0, 0.4, 0) -- Căn giữa màn hình
+
+-- Bo tròn góc của bảng
+UICorner.Parent = Frame
+UICorner.CornerRadius = UDim.new(0, 15) -- Bán kính bo góc
+
+-- Viền RGB cho bảng
+FrameBorder.Parent = Frame
+FrameBorder.Size = UDim2.new(1, 6, 1, 6) -- Bao phủ bảng với khoảng cách 6 pixel
+FrameBorder.Position = UDim2.new(-0.03, 0, -0.03, 0) -- Đặt viền bên ngoài
+FrameBorder.BackgroundTransparency = 1 -- Để ẩn nền
+FrameBorder.ZIndex = 0 -- Nằm dưới bảng
+
+-- Tiêu đề
+Title.Parent = Frame
+Title.Text = "Youtube NT MOBA"
+Title.Font = Enum.Font.GothamBold
+Title.TextSize = 24
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.Position = UDim2.new(0.15, 10, 0.1, 0)
+Title.Size = UDim2.new(0.8, 0, 0.2, 0)
+Title.BackgroundTransparency = 1
+
+-- Logo
+Logo.Parent = Frame
+Logo.Image = "rbxassetid://123456789" -- Thay bằng Asset ID của logo
+Logo.Size = UDim2.new(0.1, 0, 0.5, 0)
+Logo.Position = UDim2.new(0.02, 0, 0.1, 0)
+Logo.BackgroundTransparency = 1
+
+-- Thanh tiến trình
+ProgressBar.Parent = Frame
+ProgressBar.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+ProgressBar.Size = UDim2.new(0, 0, 0, 20) -- Chiều rộng ban đầu là 0
+ProgressBar.Position = UDim2.new(0.1, 0, 0.6, 0)
+
+-- Bo tròn góc thanh tiến trình
+ProgressBarCorner.Parent = ProgressBar
+ProgressBarCorner.CornerRadius = UDim.new(0, 10)
+
+-- Viền RGB cho thanh tiến trình
+ProgressBarBorder.Parent = ProgressBar
+ProgressBarBorder.Size = UDim2.new(1, 6, 1, 6)
+ProgressBarBorder.Position = UDim2.new(-0.03, 0, -0.03, 0)
+ProgressBarBorder.BackgroundTransparency = 1
+ProgressBarBorder.ZIndex = 0
+
+-- Văn bản trạng thái tiến trình
+ProgressText.Parent = Frame
+ProgressText.Text = "Đang tải: 0%"
+ProgressText.Font = Enum.Font.Gotham
+ProgressText.TextSize = 18
+ProgressText.TextColor3 = Color3.fromRGB(255, 255, 255)
+ProgressText.Position = UDim2.new(0.1, 0, 0.75, 0)
+ProgressText.Size = UDim2.new(0.8, 0, 0.2, 0)
+ProgressText.BackgroundTransparency = 1
+
+-- Hiệu ứng RGB chạy viền
+local function createRGBEffect(element)
+    local hue = 0
+    while element.Parent do
+        hue = (hue + 1) % 360
+        element.BackgroundColor3 = Color3.fromHSV(hue / 360, 1, 1)
+        task.wait(0.03) -- Thay đổi màu mỗi 0.03 giây
+    end
+end
+
+-- Bắt đầu hiệu ứng RGB
+spawn(function() createRGBEffect(FrameBorder) end)
+spawn(function() createRGBEffect(ProgressBarBorder) end)
+
+-- Hiệu ứng chạy thanh tiến trình
+for i = 1, 100 do
+    ProgressBar.Size = UDim2.new(0.8 * (i / 100), 0, 0, 20) -- Tăng chiều rộng dần
+    ProgressText.Text = "Đang tải: " .. i .. "%"
+    wait(0.05) -- Điều chỉnh tốc độ
+end
+
+-- Xóa GUI loading sau khi hoàn tất
+ScreenGui:Destroy()
+
 local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/ngonhatduy1029/CapheBika/refs/heads/main/BloxFruits.lua.txt"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 --------------------------------------------------------------------------------------------------------------------------------------------
 local Window = Fluent:CreateWindow({
-    Title = "Cà phê Bika",
-    SubTitle = "by Roblox Lee Bika",
+    Title = "NT MOBA",
+    SubTitle = " | Ver1",
     TabWidth = 160,
     Size = UDim2.fromOffset(450, 300),
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
@@ -23,6 +124,16 @@ local Tabs = {
     Shop = Window:AddTab({ Title = "Cửa hàng", Icon = "shopping-cart" }),
 	Misc = Window:AddTab({ Title = "Khác", Icon = "list-plus" }),
 }
+
+Tabs.Shop:AddSection("Comming Soon...")
+Tabs.Stats:AddSection("Comming Soon...")
+Tabs.Player:AddSection("Comming Soon...")
+Tabs.Teleport:AddSection("Comming Soon...")
+Tabs.Fruit:AddSection("Comming Soon...")
+Tabs.Ra:AddSection("Comming Soon...")
+Tabs.Race:AddSection("Comming Soon...")
+Tabs.Misc:AddSection("Đăng Ký Kênh NT MOBA nhé!")
+
 local Options = Fluent.Options
 
 do
