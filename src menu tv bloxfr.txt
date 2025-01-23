@@ -15,8 +15,8 @@ ScreenGui.Name = "LoadingScreen"
 -- Nền chính của bảng
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-Frame.Size = UDim2.new(0.4, 0, 0.25, 0) -- Tăng kích thước bảng
-Frame.Position = UDim2.new(0.3, 0, 0.4, 0) -- Căn giữa màn hình
+Frame.Size = UDim2.new(0.45, 0, 0.3, 0) -- Tăng độ rộng và chiều cao bảng
+Frame.Position = UDim2.new(0.275, 0, 0.35, 0) -- Căn giữa màn hình
 
 -- Bo tròn góc của bảng
 UICorner.Parent = Frame
@@ -28,13 +28,13 @@ Title.Text = "Youtube NT MOBA"
 Title.Font = Enum.Font.GothamBold
 Title.TextSize = 24
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.Position = UDim2.new(0.15, 50, 0.1, 0)
+Title.Position = UDim2.new(0.15, 40, 0.1, 0) -- Kéo lại gần logo hơn
 Title.Size = UDim2.new(0.7, 0, 0.2, 0)
 Title.BackgroundTransparency = 1
 
 -- Logo
 Logo.Parent = Frame
-Logo.Image = "rbxassetid://122376714508463" -- Thay bằng Asset ID của logo
+Logo.Image = "rbxassetid://123456789" -- Thay bằng Asset ID của logo
 Logo.Size = UDim2.new(0.1, 0, 0.4, 0) -- Kích thước vuông
 Logo.Position = UDim2.new(0.02, 0, 0.1, 0)
 Logo.BackgroundTransparency = 1
@@ -55,13 +55,13 @@ ProgressText.Text = "Đang tải: 0%"
 ProgressText.Font = Enum.Font.Gotham
 ProgressText.TextSize = 18
 ProgressText.TextColor3 = Color3.fromRGB(255, 255, 255)
-ProgressText.Position = UDim2.new(0.1, 0, 0.7, 0) -- Đặt dưới thanh tiến trình
+ProgressText.Position = UDim2.new(0.1, 0, 0.7, 5) -- Đặt xuống dưới thanh tiến trình với khoảng cách hợp lý
 ProgressText.Size = UDim2.new(0.8, 0, 0.2, 0)
 ProgressText.BackgroundTransparency = 1
 
 -- Hiệu ứng chạy thanh tiến trình
 for i = 1, 100 do
-    ProgressBar.Size = UDim2.new(0.8 * (i / 100), 0, 0, 20)
+    ProgressBar.Size = UDim2.new(0.8 * (i / 100), 0, 0, 20) -- Thanh tiến trình rộng hơn
     ProgressText.Text = "Đang tải: " .. i .. "%"
     wait(0.05)
 end
