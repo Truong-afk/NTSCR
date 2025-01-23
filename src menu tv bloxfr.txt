@@ -1,81 +1,10 @@
--- Tạo GUI loading
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local UICorner = Instance.new("UICorner")
-local ProgressBar = Instance.new("Frame")
-local ProgressBarCorner = Instance.new("UICorner")
-local ProgressText = Instance.new("TextLabel")
-local Title = Instance.new("TextLabel")
-local Logo = Instance.new("ImageLabel")
-
--- Đưa GUI vào PlayerGui
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.Name = "LoadingScreen"
-
--- Nền chính của bảng
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-Frame.Size = UDim2.new(0.45, 0, 0.3, 0) -- Tăng độ rộng và chiều cao bảng
-Frame.Position = UDim2.new(0.275, 0, 0.35, 0) -- Căn giữa màn hình
-
--- Bo tròn góc của bảng
-UICorner.Parent = Frame
-UICorner.CornerRadius = UDim.new(0, 15)
-
--- Tiêu đề
-Title.Parent = Frame
-Title.Text = "Youtube NT MOBA"
-Title.Font = Enum.Font.GothamBold
-Title.TextSize = 24
-Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.Position = UDim2.new(0.15, 30, 0.1, 0) -- Kéo lại gần logo hơn
-Title.Size = UDim2.new(0.7, 0, 0.2, 0)
-Title.BackgroundTransparency = 1
-
--- Logo
-Logo.Parent = Frame
-Logo.Image = "rbxassetid://122376714508463" -- Thay bằng Asset ID của logo
-Logo.Size = UDim2.new(0.1, 0, 0.4, 0) -- Kích thước vuông
-Logo.Position = UDim2.new(0.02, 0, 0.1, 0)
-Logo.BackgroundTransparency = 1
-
--- Thanh tiến trình
-ProgressBar.Parent = Frame
-ProgressBar.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
-ProgressBar.Size = UDim2.new(0, 0, 0, 20)
-ProgressBar.Position = UDim2.new(0.1, 0, 0.6, 0)
-
--- Bo tròn góc thanh tiến trình
-ProgressBarCorner.Parent = ProgressBar
-ProgressBarCorner.CornerRadius = UDim.new(0, 10)
-
--- Văn bản trạng thái tiến trình
-ProgressText.Parent = Frame
-ProgressText.Text = "Đang tải: 0%"
-ProgressText.Font = Enum.Font.Gotham
-ProgressText.TextSize = 18
-ProgressText.TextColor3 = Color3.fromRGB(255, 255, 255)
-ProgressText.Position = UDim2.new(0.1, 0, 0.7, 5) -- Đặt xuống dưới thanh tiến trình với khoảng cách hợp lý
-ProgressText.Size = UDim2.new(0.8, 0, 0.2, 0)
-ProgressText.BackgroundTransparency = 1
-
--- Hiệu ứng chạy thanh tiến trình
-for i = 1, 100 do
-    ProgressBar.Size = UDim2.new(0.8 * (i / 100), 0, 0, 20) -- Thanh tiến trình rộng hơn
-    ProgressText.Text = "Đang tải: " .. i .. "%"
-    wait(0.05)
-end
-
--- Xóa GUI loading sau khi hoàn tất
-ScreenGui:Destroy()
-
-local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/heatdeck123/UI-Lib/main/robloxscripts/main%20flunet"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/heatdeck123/UI-Lib/main/robloxscripts/fluent%20save"))()
-local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/heatdeck123/UI-Lib/main/robloxscripts/fluent%20interface"))()
----------------------------------------------------------------------------------------------------------------------------------------------
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+----------------------------------------------------------------------------------------------------------------------------------------------
 local Window = Fluent:CreateWindow({
-    Title = "Ak Hub | Người Làm Nguyễn Trí Tài",
-    SubTitle = "Blox Fruit",
+    Title = ""CLT Hub | Blox Fruits",
+    SubTitle = "by The_Kingzinhu",
     TabWidth = 160,
     Size = UDim2.fromOffset(500, 320),
     Acrylic = true,
@@ -83,18 +12,17 @@ local Window = Fluent:CreateWindow({
     MinimizeKey = Enum.KeyCode.End
 })
 local Tabs = {
-    info = Window:AddTab({ Title = "Info", Icon = "cherry" }),
-    Main = Window:AddTab({ Title = "Chính", Icon = "cherry" }),
-    Setting = Window:AddTab({ Title = "Setting", Icon = "cherry" }),
-    Stats = Window:AddTab({ Title = "Chỉ Số", Icon = "cherry" }),
-    Player = Window:AddTab({ Title = "Người Chơi", Icon = "cherry" }),
-    Teleport = Window:AddTab({ Title = "Đảo", Icon = "cherry" }),
-    Fruit = Window:AddTab({ Title = "Trái Cây", Icon = "cherry" }),
-    Raid = Window:AddTab({ Title = "Thức Tỉnh", Icon = "cherry" }),
-    Race = Window:AddTab({ Title = "Thức Tỉnh v4", Icon = "cherry" }),
-    Shop = Window:AddTab({ Title = "Cửa Hàng", Icon = "cherry" }),
-	Misc = Window:AddTab({ Title = "Misc", Icon = "cherry" }),
-    Hop = Window:AddTab({ Title = "Hop", Icon = "cherry" }),
+    Main = Window:AddTab({ Title = "Main", Icon = "home" }),
+    Setting = Window:AddTab({ Title = "Setting", Icon = "settings" }),
+    Stats = Window:AddTab({ Title = "Stats", Icon = "plus-circle" }),
+    Player = Window:AddTab({ Title = "Player", Icon = "box" }),
+    Teleport = Window:AddTab({ Title = "Island", Icon = "palmtree" }),
+    Fruit = Window:AddTab({ Title = "Fruit", Icon = "cherry" }),
+    Raid = Window:AddTab({ Title = "Raid", Icon = "swords" }),
+    Race = Window:AddTab({ Title = "Race V4", Icon = "chevrons-right" }),
+    Shop = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }),
+	Misc = Window:AddTab({ Title = "Misc", Icon = "list-plus" }),
+    Hop = Window:AddTab({ Title = "Hop", Icon = "wifi" }),
 }
 local Options = Fluent.Options
 do
@@ -103,6 +31,24 @@ do
 local id = game.PlaceId
 if id == 2753915549 then First_Sea = true; elseif id == 4442272183 then Second_Sea = true; elseif id == 7449423635 then Third_Sea = true; else game:Shutdown() end;
 --------------------------------------------------------------------------------------------------------------------------------------------
+--// Flag Player
+function AntiBan()
+    for i,v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+        if v:IsA("LocalScript") then
+            if v.Name == "General" or v.Name == "Shiftlock"  or v.Name == "FallDamage" or v.Name == "4444" or v.Name == "CamBob" or v.Name == "JumpCD" or v.Name == "Looking" or v.Name == "Run" then
+                v:Destroy()
+            end
+        end
+     end
+     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerScripts:GetDescendants()) do
+        if v:IsA("LocalScript") then
+            if v.Name == "RobloxMotor6DBugFix" or v.Name == "Clans"  or v.Name == "Codes" or v.Name == "CustomForceField" or v.Name == "MenuBloodSp"  or v.Name == "PlayerList" then
+                v:Destroy()
+            end
+        end
+     end
+    end
+    AntiBan()
 --------------------------------------------------------------------------------------------------------------------------------------------
 --// Anti AFK
 game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -727,13 +673,20 @@ QuestLv = 1
 NameMon = "Isle Outlaw"
 CFrameQ = CFrame.new(-16549.890625, 55.68635559082031, -179.91360473632812)
 CFrameMon = CFrame.new(-16162.8193359375, 11.6863374710083, -96.45481872558594)
-elseif Lv == 2475 or Lv <= 2524 or SelectMonster == "Island Boy" or SelectArea == 'Tiki Outpost' then
+elseif Lv == 2475 or Lv <= 2499 or SelectMonster == "Island Boy" or SelectArea == 'Tiki Outpost' then 
 Ms = "Island Boy"
 NameQuest = "TikiQuest1"
 QuestLv = 2
 NameMon = "Island Boy"
 CFrameQ = CFrame.new(-16549.890625, 55.68635559082031, -179.91360473632812)
 CFrameMon = CFrame.new(-16912.130859375, 11.787443161010742, -133.0850830078125)
+elseif Lv == 2500 or Lv <= 2424 then
+Ms = "Sun-kissed Warrior"
+QuestLv = 1
+NameQuest = "TikiQuest2"
+NameMon = "kissed"
+CFrameQ = CFrame.new(-16539.078125, 55.68632888793945, 1051.5738525390625)
+CFrameMon = CFrame.new(-16349.8779296875, 92.0808334350586, 1123.4169921875)
 elseif Lv >= 2525 or SelectMonster == "Isle Champion" or SelectArea == 'Tiki Outpost' then
 Ms = "Isle Champion"
 NameQuest = "TikiQuest2"
@@ -2563,7 +2516,7 @@ ImageButton.BorderSizePixel = 0
 ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
 ImageButton.Size = UDim2.new(0, 50, 0, 50)
 ImageButton.Draggable = true
-ImageButton.Image = "http://www.roblox.com/asset/?id=18735998414"
+ImageButton.Image = "http://www.roblox.com/asset/?id=16024431693"
 ImageButton.MouseButton1Down:connect(function()
     game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.End,false,game)
 end)
@@ -2579,16 +2532,6 @@ end
 -- Hehe
 --------------------------------------------------------------------------------------------------------------------------------------------
 --Create Tabs
-Tabs.info:AddParagraph({
-        Title = "Owner",
-        Content = "Bap Mod Game"
-    })
-
-Tabs.info:AddParagraph({
-        Title = "Script Chất Lượng Top 5 Hàng Đầu Việt Nam",
-        Content = "Nhận Cho Thuê Script"
-    })
-    
 local Farming = Tabs.Main:AddSection("Farming")
 local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack'}
 
@@ -2597,7 +2540,7 @@ local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack'}
         Description = "Chọn Tốc Độ Đánh",
         Values = listfastattack,
         Multi = false,
-        Default = 0.9,
+        Default = 1,
     })
     DropdownDelayAttack:SetValue("Fast Attack")
     DropdownDelayAttack:OnChanged(function(Value)
@@ -2867,7 +2810,7 @@ Tabs.Main:AddButton({
     Callback = function()
         _G.JoinTeam = "Pirates"
         _G.Stop_If_Has_Items = true
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptpastebin/raw/main/Chest_onoff"))()
+        loadstring(game:HttpGet("https://github.com/PNguyen0199/Script/raw/main/Trash_Auto_Chest.lua"))()
     end
 })
 
@@ -3221,7 +3164,7 @@ end
 if Third_Sea then
 local MiscFarm = Tabs.Main:AddSection("Katakuri Farm")
 local Mob_Kill_Cake_Prince = Tabs.Main:AddParagraph({
-    Title = "Kiểm Tra Cake Mob",
+    Title = "Check Cake Mob",
     Content = ""
 })
 
@@ -3243,7 +3186,7 @@ end)
 
 
 local ToggleCake = Tabs.Main:AddToggle("ToggleCake", {
-    Title = "Auto Fram Cake Prince",
+    Title = "Auto Cake Prince",
     Description = "Cày Tư Lệnh Bột", 
     Default = false })
 ToggleCake:OnChanged(function(Value)
@@ -3456,25 +3399,25 @@ local boss = Tabs.Main:AddSection("Boss Farm")
 
     if First_Sea then
         MaterialList = {
-          "Sắt Vụng","Da Thuột","Cách Thiên Thần","Quặng Nham Thạch","Fish Tail"
+          "Scrap Metal","Leather","Angel Wings","Magma Ore","Fish Tail"
         } elseif Second_Sea then
         MaterialList = {
-          "Sắt Vụng","Da","Radioactive Phóng Sạ","Nướt Mắt Thần Bí","Quặng Nham Thạch","Răng Nanh"
+          "Scrap Metal","Leather","Radioactive Material","Mystic Droplet","Magma Ore","Vampire Fang"
         } elseif Third_Sea then
         MaterialList = {
-          "Sắt Vụng","Quỷ Hồn","Bột Cacao","Vẫy Rồng","Thuốc Súng","Sừng Tê Giác"
+          "Scrap Metal","Leather","Demonic Wisp","Conjured Cocoa","Dragon Scale","Gunpowder","Fish Tail","Mini Tusk"
         }
         end
 
     local DropdownMaterial = Tabs.Main:AddDropdown("DropdownMaterial", {
         Title = "Dropdown",
-        Description = "Vui Lòng Chọn Nguyên Liệu",
+        Description = "Chọn Nguyên Liệu",
         Values = MaterialList,
         Multi = false,
         Default = 1,
     })
 
-    DropdownMaterial:SetValue("Vẫy Rồng")
+    DropdownMaterial:SetValue("Dragon Scale")
 
     DropdownMaterial:OnChanged(function(Value)
         SelectMaterial = Value
@@ -3546,9 +3489,9 @@ local StatusKitsune = Tabs.Main:AddParagraph({
 })
 function UpdateKitsune()
     if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island') then
-        StatusKitsune:SetDesc("Đảo Kitsune : 🟢yes")
+        StatusKitsune:SetDesc("Kitsune Island : 🟢yes")
     else
-        StatusKitsune:SetDesc("Đảo Kitsune : 🔴no")
+        StatusKitsune:SetDesc("Kitsune Island : 🔴no")
      end
 end
 spawn(function()
@@ -3559,7 +3502,7 @@ spawn(function()
     end)
 end)
 
-      local ToggleEspKitsune = Tabs.Main:AddToggle("ToggleEspKitsune", {Title = "Esp Định vị Kitsune Island",Description = "Định vị Đảo kisune", Default = false })
+      local ToggleEspKitsune = Tabs.Main:AddToggle("ToggleEspKitsune", {Title = "Esp Kitsune Island",Description = "Định vị Đảo kisune", Default = false })
       ToggleEspKitsune:OnChanged(function(Value)
         KitsuneIslandEsp = Value
         while KitsuneIslandEsp do wait()
@@ -7457,7 +7400,7 @@ spawn(function()
         elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
             Hop()
             Fluent:Notify({
-                Title = "Tri Minh Hub",
+                Title = "Fai Fao Hub",
                 Content = "Turn Off Find Full Moon...",
                 SubContent = "", -- Optional
                 Duration = 5 -- Set to nil to make the notification not disappear
@@ -7465,7 +7408,7 @@ spawn(function()
         elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
             Hop()
             Fluent:Notify({
-                Title = "Tri Minh Hub",
+                Title = "Fai Fao Hub",
                 Content = "Hop...",
                 SubContent = "", -- Optional
                 Duration = 5 -- Set to nil to make the notification not disappear
@@ -7473,7 +7416,7 @@ spawn(function()
         elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
             Hop()
             Fluent:Notify({
-                Title = "Tri Minh Hub",
+                Title = "Fai Fao Hub",
                 Content = "Hop...",
                 SubContent = "", -- Optional
                 Duration = 5 -- Set to nil to make the notification not disappear
@@ -7508,8 +7451,8 @@ end)
 end
 ----------------------------------------------------------------------------------------------------------------------------------------------
 Fluent:Notify({
-    Title = "Delay 9S",
-    Content = "The script has been loaded.",
-    Durtion = 9
+    Title = "CLT hub",
+    Content = "voce foi contratado.",
+    Durtion = 3
 })
-warn("SUPPORT SERVER DISCORD https://discord.com/invite/SVmt8hUBzR! Nhận Cho Thuê Script")
+warn("CLT Hub Loading Completed !!")
