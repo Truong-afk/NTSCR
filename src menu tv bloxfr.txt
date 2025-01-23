@@ -1,41 +1,10 @@
--- Fast New
-repeat
-    wait()
-until game:IsLoaded() and game.Players.LocalPlayer and game.Players.LocalPlayer.Character;
-function format(uwu)
-    return tostring(uwu):reverse():gsub("%d%d%d", "%1,"):reverse():gsub("^,", "")
-end;
-local data = {
-    ["content"] = "New Information Player",
-    ["embeds"] = {
-        {
-            ["title"] = "MTriet Hub",
-            ["description"] = "Exploit: " .. identifyexecutor() .. "\nUsername: " .. game.Players.LocalPlayer.Name .. "\nLevel: " .. format(game:GetService("Players").LocalPlayer.Data.Level.Value) .. "\nBeli: " .. format(game:GetService("Players").LocalPlayer.Data.Beli.Value) .. "\nFragments: " .. format(game:GetService("Players").LocalPlayer.Data.Fragments.Value) .. "\nEXP: " .. format(game:GetService("Players").LocalPlayer.Data.Exp.Value) .. "\nSpawn Point: " .. game:GetService("Players").LocalPlayer.Data.LastSpawnPoint.Value .. "\nDevil Fruit: " .. game:GetService("Players").LocalPlayer.Data.DevilFruit.Value .. "\nBounty/Honor: " .. format(game:GetService("Players").LocalPlayer.leaderstats["Bounty/Honor"].Value) .. "\nRace : " .. game:GetService("Players").LocalPlayer.Data.Race.Value .. "\n Game Name : " .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. "\nServer Job Id: " .. tostring(game.JobId) .. "\nGame Id: " .. tostring(game.PlaceId),
-            ["type"] = "rich",
-            ["color"] = tonumber(1),
-            ["image"] = {
-                ["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" .. tostring(game:GetService("Players").LocalPlayer.Name)
-            }
-        }
-    }
-}
-request = http_request or request or HttpPost or fluxus.request or syn.request or Krnl.request;
-request({
-    Url = "https://discord.com/api/webhooks/1261210725137911888/qLpdNbCH88jVRhbWuX_sTAnByx1cEfnSqYZJq0lDdgvoTXCqP68x34XIw39MrYmDGrBm",
-    Body = game:GetService("HttpService"):JSONEncode(data),
-    Method = "POST",
-    Headers = {
-        ["content-type"] = "application/json"
-    }
-})
-
-local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
-----------------------------------------------------------------------------------------------------------------------------------------------
+cal Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/heatdeck123/UI-Lib/main/robloxscripts/main%20flunet"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/heatdeck123/UI-Lib/main/robloxscripts/fluent%20save"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/heatdeck123/UI-Lib/main/robloxscripts/fluent%20interface"))()
+---------------------------------------------------------------------------------------------------------------------------------------------
 local Window = Fluent:CreateWindow({
-    Title = "Tai siu | Blox Fruits",
-    SubTitle = "Version 1.5",
+    Title = "Ak Hub | Người Làm Nguyễn Trí Tài",
+    SubTitle = "Blox Fruit",
     TabWidth = 160,
     Size = UDim2.fromOffset(500, 320),
     Acrylic = true,
@@ -43,17 +12,18 @@ local Window = Fluent:CreateWindow({
     MinimizeKey = Enum.KeyCode.End
 })
 local Tabs = {
-    Main = Window:AddTab({ Title = "Chính", Icon = "box" }),
-    Setting = Window:AddTab({ Title = "Cài Đặt Icon = "box" }),
-    Stats = Window:AddTab({ Title = "Điểm", Icon = "box" }),
-    Player = Window:AddTab({ Title = "Người Chơi", Icon = "box" }),
-    Teleport = Window:AddTab({ Title = "Đảo", Icon = "bos" }),
-    Fruit = Window:AddTab({ Title = "Trái Cây", Icon = "box" }),
-    Raid = Window:AddTab({ Title = "Raid", Icon = "box" }),
-    Race = Window:AddTab({ Title = "Thức Tỉnh V4", Icon = "box" }),
-    Shop = Window:AddTab({ Title = "Cửa Hàng", Icon = "box" }),
-	Misc = Window:AddTab({ Title = "Misc", Icon = "box" }),
-    Hop = Window:AddTab({ Title = "Hop", Icon = "box" }),
+    info = Window:AddTab({ Title = "Info", Icon = "cherry" }),
+    Main = Window:AddTab({ Title = "Chính", Icon = "cherry" }),
+    Setting = Window:AddTab({ Title = "Setting", Icon = "cherry" }),
+    Stats = Window:AddTab({ Title = "Chỉ Số", Icon = "cherry" }),
+    Player = Window:AddTab({ Title = "Người Chơi", Icon = "cherry" }),
+    Teleport = Window:AddTab({ Title = "Đảo", Icon = "cherry" }),
+    Fruit = Window:AddTab({ Title = "Trái Cây", Icon = "cherry" }),
+    Raid = Window:AddTab({ Title = "Thức Tỉnh", Icon = "cherry" }),
+    Race = Window:AddTab({ Title = "Thức Tỉnh v4", Icon = "cherry" }),
+    Shop = Window:AddTab({ Title = "Cửa Hàng", Icon = "cherry" }),
+	Misc = Window:AddTab({ Title = "Misc", Icon = "cherry" }),
+    Hop = Window:AddTab({ Title = "Hop", Icon = "cherry" }),
 }
 local Options = Fluent.Options
 do
@@ -62,24 +32,6 @@ do
 local id = game.PlaceId
 if id == 2753915549 then First_Sea = true; elseif id == 4442272183 then Second_Sea = true; elseif id == 7449423635 then Third_Sea = true; else game:Shutdown() end;
 --------------------------------------------------------------------------------------------------------------------------------------------
---// Flag Player
-function AntiBan()
-    for i,v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
-        if v:IsA("LocalScript") then
-            if v.Name == "General" or v.Name == "Shiftlock"  or v.Name == "FallDamage" or v.Name == "4444" or v.Name == "CamBob" or v.Name == "JumpCD" or v.Name == "Looking" or v.Name == "Run" then
-                v:Destroy()
-            end
-        end
-     end
-     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerScripts:GetDescendants()) do
-        if v:IsA("LocalScript") then
-            if v.Name == "RobloxMotor6DBugFix" or v.Name == "Clans"  or v.Name == "Codes" or v.Name == "CustomForceField" or v.Name == "MenuBloodSp"  or v.Name == "PlayerList" then
-                v:Destroy()
-            end
-        end
-     end
-    end
-    AntiBan()
 --------------------------------------------------------------------------------------------------------------------------------------------
 --// Anti AFK
 game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -2540,7 +2492,7 @@ ImageButton.BorderSizePixel = 0
 ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
 ImageButton.Size = UDim2.new(0, 50, 0, 50)
 ImageButton.Draggable = true
-ImageButton.Image = "http://www.roblox.com/asset/?id=16709968093"
+ImageButton.Image = "http://www.roblox.com/asset/?id=18735998414"
 ImageButton.MouseButton1Down:connect(function()
     game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.End,false,game)
 end)
@@ -2556,6 +2508,16 @@ end
 -- Hehe
 --------------------------------------------------------------------------------------------------------------------------------------------
 --Create Tabs
+Tabs.info:AddParagraph({
+        Title = "Owner",
+        Content = "Bap Mod Game"
+    })
+
+Tabs.info:AddParagraph({
+        Title = "Script Chất Lượng Top 5 Hàng Đầu Việt Nam",
+        Content = "Nhận Cho Thuê Script"
+    })
+    
 local Farming = Tabs.Main:AddSection("Farming")
 local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack'}
 
@@ -2564,7 +2526,7 @@ local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack'}
         Description = "Chọn Tốc Độ Đánh",
         Values = listfastattack,
         Multi = false,
-        Default = 1,
+        Default = 0.9,
     })
     DropdownDelayAttack:SetValue("Fast Attack")
     DropdownDelayAttack:OnChanged(function(Value)
@@ -2834,7 +2796,7 @@ Tabs.Main:AddButton({
     Callback = function()
         _G.JoinTeam = "Pirates"
         _G.Stop_If_Has_Items = true
-        loadstring(game:HttpGet("https://github.com/PNguyen0199/Script/raw/main/Trash_Auto_Chest.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptpastebin/raw/main/Chest_onoff"))()
     end
 })
 
@@ -3188,7 +3150,7 @@ end
 if Third_Sea then
 local MiscFarm = Tabs.Main:AddSection("Katakuri Farm")
 local Mob_Kill_Cake_Prince = Tabs.Main:AddParagraph({
-    Title = "Check Cake Mob",
+    Title = "Kiểm Tra Cake Mob",
     Content = ""
 })
 
@@ -3210,7 +3172,7 @@ end)
 
 
 local ToggleCake = Tabs.Main:AddToggle("ToggleCake", {
-    Title = "Auto Cake Prince",
+    Title = "Auto Fram Cake Prince",
     Description = "Cày Tư Lệnh Bột", 
     Default = false })
 ToggleCake:OnChanged(function(Value)
@@ -3423,25 +3385,25 @@ local boss = Tabs.Main:AddSection("Boss Farm")
 
     if First_Sea then
         MaterialList = {
-          "Scrap Metal","Leather","Angel Wings","Magma Ore","Fish Tail"
+          "Sắt Vụng","Da Thuột","Cách Thiên Thần","Quặng Nham Thạch","Fish Tail"
         } elseif Second_Sea then
         MaterialList = {
-          "Scrap Metal","Leather","Radioactive Material","Mystic Droplet","Magma Ore","Vampire Fang"
+          "Sắt Vụng","Da","Radioactive Phóng Sạ","Nướt Mắt Thần Bí","Quặng Nham Thạch","Răng Nanh"
         } elseif Third_Sea then
         MaterialList = {
-          "Scrap Metal","Leather","Demonic Wisp","Conjured Cocoa","Dragon Scale","Gunpowder","Fish Tail","Mini Tusk"
+          "Sắt Vụng","Quỷ Hồn","Bột Cacao","Vẫy Rồng","Thuốc Súng","Sừng Tê Giác"
         }
         end
 
     local DropdownMaterial = Tabs.Main:AddDropdown("DropdownMaterial", {
         Title = "Dropdown",
-        Description = "Chọn Nguyên Liệu",
+        Description = "Vui Lòng Chọn Nguyên Liệu",
         Values = MaterialList,
         Multi = false,
         Default = 1,
     })
 
-    DropdownMaterial:SetValue("Dragon Scale")
+    DropdownMaterial:SetValue("Vẫy Rồng")
 
     DropdownMaterial:OnChanged(function(Value)
         SelectMaterial = Value
@@ -3513,9 +3475,9 @@ local StatusKitsune = Tabs.Main:AddParagraph({
 })
 function UpdateKitsune()
     if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island') then
-        StatusKitsune:SetDesc("Kitsune Island : 🟢yes")
+        StatusKitsune:SetDesc("Đảo Kitsune : 🟢yes")
     else
-        StatusKitsune:SetDesc("Kitsune Island : 🔴no")
+        StatusKitsune:SetDesc("Đảo Kitsune : 🔴no")
      end
 end
 spawn(function()
@@ -3526,7 +3488,7 @@ spawn(function()
     end)
 end)
 
-      local ToggleEspKitsune = Tabs.Main:AddToggle("ToggleEspKitsune", {Title = "Esp Kitsune Island",Description = "Định vị Đảo kisune", Default = false })
+      local ToggleEspKitsune = Tabs.Main:AddToggle("ToggleEspKitsune", {Title = "Esp Định vị Kitsune Island",Description = "Định vị Đảo kisune", Default = false })
       ToggleEspKitsune:OnChanged(function(Value)
         KitsuneIslandEsp = Value
         while KitsuneIslandEsp do wait()
@@ -5969,7 +5931,7 @@ spawn(function()
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit","Flame-Flame",game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Flame Fruit"))
                     end
                     if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Falcon Fruit") or game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Falcon Fruit") then
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit","Falcon",game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Falcon Fruit"))
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit","Falcon",game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("alcon Fruit"))
                     end
                     if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Ice Fruit") or game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Ice Fruit") then
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit","Ice-Ice",game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Ice Fruit"))
@@ -7424,7 +7386,7 @@ spawn(function()
         elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
             Hop()
             Fluent:Notify({
-                Title = "Min gaming Game",
+                Title = "Tri Minh Hub",
                 Content = "Turn Off Find Full Moon...",
                 SubContent = "", -- Optional
                 Duration = 5 -- Set to nil to make the notification not disappear
@@ -7432,7 +7394,7 @@ spawn(function()
         elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
             Hop()
             Fluent:Notify({
-                Title = "Min Gaming Game",
+                Title = "Tri Minh Hub",
                 Content = "Hop...",
                 SubContent = "", -- Optional
                 Duration = 5 -- Set to nil to make the notification not disappear
@@ -7440,7 +7402,7 @@ spawn(function()
         elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
             Hop()
             Fluent:Notify({
-                Title = "Min Gaming Game",
+                Title = "Tri Minh Hub",
                 Content = "Hop...",
                 SubContent = "", -- Optional
                 Duration = 5 -- Set to nil to make the notification not disappear
@@ -7475,8 +7437,8 @@ end)
 end
 ----------------------------------------------------------------------------------------------------------------------------------------------
 Fluent:Notify({
-    Title = "Min Gaming",
+    Title = "Delay 9S",
     Content = "The script has been loaded.",
-    Durtion = 3
+    Durtion = 9
 })
-warn("Min Gaming Loading Completed !!")
+warn("SUPPORT SERVER DISCORD https://discord.com/invite/SVmt8hUBzR! Nhận Cho Thuê Script")
