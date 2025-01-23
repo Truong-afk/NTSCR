@@ -28,7 +28,7 @@ Title.Text = "Youtube NT MOBA"
 Title.Font = Enum.Font.GothamBold
 Title.TextSize = 24
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.Position = UDim2.new(0.15, 40, 0.1, 0) -- Kéo lại gần logo hơn
+Title.Position = UDim2.new(0.15, 30, 0.1, 0) -- Kéo lại gần logo hơn
 Title.Size = UDim2.new(0.7, 0, 0.2, 0)
 Title.BackgroundTransparency = 1
 
