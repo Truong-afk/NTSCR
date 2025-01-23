@@ -34,7 +34,7 @@ Title.BackgroundTransparency = 1
 
 -- Logo
 Logo.Parent = Frame
-Logo.Image = "rbxassetid://123456789" -- Thay bằng Asset ID của logo
+Logo.Image = "rbxassetid://122376714508463" -- Thay bằng Asset ID của logo
 Logo.Size = UDim2.new(0.1, 0, 0.4, 0) -- Kích thước vuông
 Logo.Position = UDim2.new(0.02, 0, 0.1, 0)
 Logo.BackgroundTransparency = 1
@@ -2393,7 +2393,7 @@ ImageButton.Parent = ScreenGui
 ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ImageButton.Position = UDim2.new(0.10615778, 0, 0.16217947, 0)
 ImageButton.Size = UDim2.new(0.0627121851, 0, 0.107579626, 0)
-ImageButton.Image = "rbxassetid://118483289929781"
+ImageButton.Image = "rbxassetid://122376714508463"
 
 UICorner.CornerRadius = UDim.new(0, 30)
 UICorner.Parent = ImageButton
